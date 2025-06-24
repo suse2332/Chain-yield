@@ -1,11 +1,7 @@
-// src/components/Navbar.tsx
-"use client";
-
 import React, { useState } from "react";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import Button from "../ui/button";
 import { Menu, X } from "lucide-react";
-import { useWallet } from "@/hooks/useWallet";
+import useWallet from "../../hooks/useWallet";
 
 const navItems = [
   { label: "Home", path: "/", icon: "🏠" },
@@ -29,13 +25,14 @@ export default function Navbar() {
 
       <nav className="hidden md:flex gap-6 items-center text-sm">
         {navItems.map(({ label, path, icon }) => (
-          <Link
+          <a
             key={path}
             href={path}
+            onClick={() => setMenuOpen(false)}
             className="text-gray-300 hover:text-purple-400 transition"
           >
             {icon} {label}
-          </Link>
+          </a>
         ))}
         {walletAddress && (
           <span className="text-green-400 text-xs ml-4">
@@ -61,14 +58,14 @@ export default function Navbar() {
 
           <div className="flex flex-col gap-4 text-lg">
             {navItems.map(({ label, path, icon }) => (
-              <Link
+              <a
                 key={path}
                 href={path}
                 onClick={() => setMenuOpen(false)}
                 className="text-gray-200 hover:text-purple-400 transition"
               >
                 {icon} {label}
-              </Link>
+              </a>
             ))}
 
             {walletAddress && (
@@ -76,11 +73,7 @@ export default function Navbar() {
                 <div className="mt-6 text-sm text-gray-400">
                   Connected: {walletAddress.slice(0, 6)}...{walletAddress.slice(-4)}
                 </div>
-                <Button
-                  variant="outline"
-                  className="mt-2 text-sm"
-                  onClick={disconnect}
-                >
+                <Button variant="outline" className="mt-2 text-sm" onClick={disconnect}>
                   Disconnect Wallet
                 </Button>
               </>
