@@ -1,15 +1,22 @@
-import React from 'react';
+import Navbar from './components/Navbar'
+import HeroCarousel from './components/HeroCarousel'
+import StatsTiles from './components/StatsTiles'
+import VIPTierTable from './components/VIP/VIPTierTable'
+import Footer from './components/Footer'
 
 function App() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-black text-green-400">
-      <h1 className="text-3xl font-bold">Chain Yield is Live</h1>
+    <div className="bg-black text-white">
+      <Navbar />
+      <HeroCarousel />
+      <StatsTiles />
+      <VIPTierTable />
+      <Footer />
     </div>
-  );
+  )
 }
 
-export default App;
-
+export default App
 
 
 
